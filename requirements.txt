@@ -1,0 +1,16 @@
+# Lock-less: no fully-pinned lock, so the scanner must resolve ranges/unpinned
+# entries and discover transitives.
+
+# Exact pin to a KNOWN-VULNERABLE version (arbitrary code execution). Zero deps.
+PyYAML==5.1
+
+# Exact pin to a KNOWN-VULNERABLE version (sandbox escape + ReDoS). Pulls
+# MarkupSafe as a transitive.
+Jinja2==2.10
+
+# A RANGE that must resolve to a still-VULNERABLE version (1.24.x). Tests that
+# generation resolves a range and does not stop at "range = unknown". Zero deps.
+urllib3>=1.24,<1.25
+
+# Unpinned: must resolve to the latest, which is HEALTHY. Zero deps.
+six
