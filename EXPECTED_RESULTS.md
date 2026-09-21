@@ -33,3 +33,8 @@ transitives.
   MarkupSafe missing (no transitive discovery), 0 vulns (false all-clear), or any
   invented version. The exact urllib3 patch in the 1.24 range may be 1.24.2/1.24.3;
   "urllib3 in the 1.24.x range, vulnerable" is the pass condition.
+
+## New edge case (regression re-test) — `~=` compatible-release pin
+`requirements.txt` adds `python-dateutil~=2.8.0`.
+- **PASS:** `python-dateutil@2.8.x` is healthy, and its transitive `six` resolves
+  healthy. Tests the `~=` operator.
