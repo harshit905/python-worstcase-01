@@ -17,3 +17,22 @@ six
 
 # New edge case: a `~=` compatible-release pin; resolves to 2.8.x and pulls six.
 python-dateutil~=2.8.0
+
+# ---- Round 2 edge cases ----
+
+# Option line: must be tolerated by the parser, not treated as a package.
+--index-url https://pypi.org/simple
+
+# Nested include: the scanner must follow `-r` into the second file.
+-r requirements-dev.txt
+
+# Extras syntax + a KNOWN-VULNERABLE pin whose transitive (idna 2.7) is ALSO
+# vulnerable. Also pulls PySocks (from the extra), chardet, certifi, urllib3.
+requests[socks]==2.20.0
+
+# Environment marker: skipped on Linux resolvers. Must not break parsing.
+colorama==0.4.6; sys_platform == "win32"
+
+# Name normalization: underscore in the requirement, PyPI canonical name uses a
+# hyphen (typing-extensions). Must not end up unresolved.
+typing_extensions==4.4.0

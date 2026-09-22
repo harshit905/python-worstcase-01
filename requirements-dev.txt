@@ -1,0 +1,2 @@
+# Included from requirements.txt via `-r`. KNOWN-VULNERABLE, zero deps.
+Werkzeug==0.15.3
