@@ -1,0 +1,22 @@
+{
+    "_meta": {
+        "hash": {"sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+        "pipfile-spec": 6,
+        "requires": {"python_version": "3.8"},
+        "sources": [{"name": "pypi", "url": "https://pypi.org/simple", "verify_ssl": true}]
+    },
+    "default": {
+        "markdown": {"version": "==3.3"}
+    },
+    "develop": {
+        "atomicwrites": {"version": "==1.3.0"},
+        "attrs": {"version": "==19.1.0"},
+        "more-itertools": {"version": "==7.0.0"},
+        "packaging": {"version": "==19.0"},
+        "pluggy": {"version": "==0.13.1"},
+        "py": {"version": "==1.8.0"},
+        "pyparsing": {"version": "==2.4.0"},
+        "pytest": {"version": "==4.6.0"},
+        "wcwidth": {"version": "==0.1.7"}
+    }
+}

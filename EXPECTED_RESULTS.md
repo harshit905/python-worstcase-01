@@ -84,3 +84,13 @@ PyPI's canonical name is `typing-extensions`.
 - PASS: 6 vulnerable (PyYAML, Jinja2, urllib3, requests, idna, Werkzeug);
   six, MarkupSafe, python-dateutil, PySocks, chardet, certifi,
   typing-extensions healthy; 0 unresolved.
+
+## Round 3 edge cases — dev-only transitives (`pipenv/`)
+A second, committed-lock project under `pipenv/`: `Pipfile` declares
+`markdown==3.3` (packages) and `pytest==4.6.0` (dev-packages); `Pipfile.lock`
+lists pytest's tree only under `develop`.
+- **PASS:** `markdown@3.3` healthy **PROD** direct; `pytest@4.6.0` healthy
+  **DEV** direct; `py@1.8.0` vulnerable (`CVE-2022-42969` ReDoS, no fix)
+  **DEV** transitive; `pluggy`, `atomicwrites`, `attrs`, `more-itertools`,
+  `packaging`, `pyparsing`, `wcwidth` healthy **DEV** transitives.
+- **FAIL:** `py@1.8.0` (or any develop-only package) marked PROD.
